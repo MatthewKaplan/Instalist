@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Provider } from 'react-redux';
 import Router from './src/Router';
+import store from './src/store';
 
 export class App extends Component {
 	render () {
-		return <Router />;
+		return (
+			<Provider store={store}>
+				<Router />
+			</Provider>
+		);
 	}
 }
 

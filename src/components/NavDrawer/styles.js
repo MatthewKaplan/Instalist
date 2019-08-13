@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 	mainContainer: {
 		flex: 1.0,
-		backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    height: '100%'
 	},
 	safeAreaStyle: {
 		flex: 1.0,
     backgroundColor: '#fff',
+    height: '100%'
 	},
 	headerContainer: {
 		position: 'relative',

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StatusBar } from 'react-native';
+import { Text, View, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
 import Drawer from 'react-native-drawer';
 import { AntDesign } from '@expo/vector-icons';
+import NavMenu from '../NavMenu/NavMenu';
 import styles, { drawerStyles } from './styles';
 
 console.disableYellowBox = true;
@@ -14,7 +15,7 @@ export class NavDrawer extends Component {
 	renderDrawer () {
 		return (
 			<View style={styles.menuContainer}>
-				<Text>Hi!</Text>
+				<NavMenu />
 			</View>
 		);
 	}
@@ -34,45 +35,45 @@ export class NavDrawer extends Component {
 
 	render () {
 		return (
-			<React.Fragment>
-				<StatusBar barStyle="dark-content" />
-				<View style={styles.mainContainer}>
-					<Drawer
-						ref={ref => (this.drawer = ref)}
-						content={this.renderDrawer()}
-						type="static"
-						onOpen={this.toggleDrawer}
-						onClose={this.toggleDrawer}
-						tapToClose={true}
-						openDrawerOffset={0.25}
-						styles={drawerStyles}>
-						<View style={styles.headerContainer}>
-							<TouchableOpacity style={styles.menuButton} onPress={this.openDrawer}>
-								{this.state.drawerOpen ? (
-									<AntDesign
-										name="menu-unfold"
-										style={styles.menuIcon}
-										size={25}
-										onPress={() => this.openDrawer()}
-										data-test="close-drawer-btn"
-									/>
-								) : (
-									<AntDesign
-										name="menu-fold"
-										style={styles.menuIcon}
-										size={25}
-										onPress={() => this.openDrawer()}
-										data-test="open-drawer-btn"
-									/>
-								)}
-							</TouchableOpacity>
-							<Text style={styles.headerTitle}>{'Instalist'}</Text>
-							<View style={styles.menuButton} />
-						</View>
-						{this.props.children || null}
-					</Drawer>
+				<View style={styles.safeAreaStyle}>
+					<StatusBar barStyle="dark-content" />
+					<View style={styles.mainContainer}>
+						<Drawer
+							ref={ref => (this.drawer = ref)}
+							content={this.renderDrawer()}
+							type="static"
+							onOpen={this.toggleDrawer}
+							onClose={this.toggleDrawer}
+							tapToClose={true}
+							openDrawerOffset={0.25}
+							styles={drawerStyles}>
+							<View style={styles.headerContainer}>
+								<TouchableOpacity style={styles.menuButton} onPress={this.openDrawer}>
+									{this.state.drawerOpen ? (
+										<AntDesign
+											name="menu-unfold"
+											style={styles.menuIcon}
+											size={25}
+											onPress={() => this.openDrawer()}
+											data-test="close-drawer-btn"
+										/>
+									) : (
+										<AntDesign
+											name="menu-fold"
+											style={styles.menuIcon}
+											size={25}
+											onPress={() => this.openDrawer()}
+											data-test="open-drawer-btn"
+										/>
+									)}
+								</TouchableOpacity>
+								<Text style={styles.headerTitle}>{'Instalist'}</Text>
+								<View style={styles.menuButton} />
+							</View>
+							{this.props.children || null}
+						</Drawer>
+					</View>
 				</View>
-			</React.Fragment>
 		);
 	}
 }

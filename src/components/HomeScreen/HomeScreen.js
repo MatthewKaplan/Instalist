@@ -13,7 +13,7 @@ class HomeScreen extends Component {
 	render () {
 		console.log(this.props.userInfo);
 		return (
-			<View onPress={() => Actions.userProfile()}>
+			<View style={{flex: 1}}>
 				<NavDrawer />
 			</View>
 		);

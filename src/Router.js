@@ -5,6 +5,7 @@ import SplashPage from './components/SplashPage/SplashPage';
 import HomeScreen from './components/HomeScreen/HomeScreen';
 import AuthScreen from './components/AuthScreen/AuthScreen';
 import UserProfile from './components/UserProfile/UserProfile';
+import MapScreen from './components/MapScreen/MapScreen';
 
 const RouterComponent = () => {
 	return (
@@ -16,6 +17,7 @@ const RouterComponent = () => {
 					<Scene key="homeScreen" component={HomeScreen} hideNavBar={true} />
 					<Scene key="authScreen" component={AuthScreen} hideNavBar={true} />
 					<Scene key="userProfile" component={UserProfile} hideNavBar={true} />
+					<Scene key="mapScreen" component={MapScreen} hideNavBar={true} />
 				</Scene>
 			</Router>
 		</React.Fragment>

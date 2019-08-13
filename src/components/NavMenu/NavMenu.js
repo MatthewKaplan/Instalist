@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { Octicons, FontAwesome, AntDesign, Entypo, MaterialIcons } from '@expo/vector-icons';
+import { Octicons, FontAwesome, AntDesign, Entypo, MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 
 export class NavMenu extends Component {
@@ -22,6 +22,12 @@ export class NavMenu extends Component {
 						<FontAwesome name="star" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
 						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.homeScreen()}>
 							<Text style={styles.buttonTitle}>Favorites</Text>
+						</TouchableHighlight>
+					</View>
+					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>
+						<Ionicons name="md-globe" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
+						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.mapScreen()}>
+							<Text style={styles.buttonTitle}>Map</Text>
 						</TouchableHighlight>
 					</View>
 					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>

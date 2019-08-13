@@ -1,19 +1,13 @@
 import { AsyncStorage } from 'react-native';
 import * as Facebook from 'expo-facebook';
 
-import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from './types';
-
-// How to use AsyncStorage:
-// AsyncStorage.setItem('fb_token', token);
-// AsyncStorage.getItem('fb_token');
+import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL, FACEBOOK_USER_INFO } from './types';
 
 export const facebookLogin = () => async dispatch => {
 	let token = await AsyncStorage.getItem('fb_token');
 	if (token) {
-		// Dispatch an action saying FB login is done
 		dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
 	} else {
-		// Start up FB login process
 		startFacebookLogin(dispatch);
 	}
 };
@@ -38,4 +32,11 @@ export const check_token = () => async dispatch => {
 	} else {
 		dispatch({ type: FACEBOOK_LOGIN_FAIL });
 	}
+};
+
+export const getFacebookInfo = () => async dispatch => {
+	let token = await AsyncStorage.getItem('fb_token');
+	let userInfo = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,location,picture.type(large)`);
+	const result = await userInfo.json();
+	dispatch({ type: FACEBOOK_USER_INFO, payload: result })
 };

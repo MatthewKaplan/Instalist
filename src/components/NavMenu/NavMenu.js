@@ -20,7 +20,7 @@ export class NavMenu extends Component {
 					</View>
 					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>
 						<FontAwesome name="star" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
-						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.homeScreen()}>
+						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.userFavorites()}>
 							<Text style={styles.buttonTitle}>Favorites</Text>
 						</TouchableHighlight>
 					</View>
@@ -32,25 +32,25 @@ export class NavMenu extends Component {
 					</View>
 					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>
 						<Entypo name="folder" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
-						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.homeScreen()}>
+						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.userPosts()}>
 							<Text style={styles.buttonTitle}>My Posts</Text>
 						</TouchableHighlight>
 					</View>
 					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>
 						<AntDesign name="form" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
-						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.homeScreen()}>
+						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.createPosts()}>
 							<Text style={styles.buttonTitle}>Create Posts</Text>
 						</TouchableHighlight>
 					</View>
 					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>
 						<MaterialIcons name="local-shipping" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
-						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.homeScreen()}>
+						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.userOrders()}>
 							<Text style={styles.buttonTitle}>Recent Orders</Text>
 						</TouchableHighlight>
 					</View>
 					<View style={{ flexDirection: 'row', marginTop: 20, marginLeft: 20 }}>
 						<MaterialIcons name="attach-money" size={30} color="#ffffff" style={{ paddingRight: 20 }} />
-						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.homeScreen()}>
+						<TouchableHighlight underlayColor="#a7a7a7" style={styles.button} onPress={() => Actions.itemsSold()}>
 							<Text style={styles.buttonTitle}>Items Sold</Text>
 						</TouchableHighlight>
 					</View>

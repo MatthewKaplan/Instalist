@@ -11,10 +11,9 @@ class HomeScreen extends Component {
 	}
 
 	render () {
-		console.log(this.props.userInfo);
 		return (
 			<View style={{flex: 1}}>
-				<NavDrawer />
+				<NavDrawer name={this.props.userInfo.location}/>
 			</View>
 		);
 	}

@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import * as actions from '../../actions';
 import { styles } from './styles';
 import NavDrawer from '../NavDrawer/NavDrawer';
 
 export class UserProfile extends Component {
+	handleLogOut = () => {
+		AsyncStorage.removeItem('fb_token');
+		Actions.splashPage();
+	}
+
 	render () {
 		const { name, location, picture, email } = this.props.userInfo;
 		return (
 			<View style={styles.container}>
-				<NavDrawer>
+				<NavDrawer name="Profile">
 					<View style={styles.profileContainer}>
 						<Image
 							source={{
@@ -39,6 +45,9 @@ export class UserProfile extends Component {
 								{email}
 							</Text>
 						</View>
+						<TouchableOpacity onPress={() => this.handleLogOut()} style={styles.buttonStyle}>
+							<Text style={styles.textStyle}>Sign Out</Text>
+						</TouchableOpacity>
 					</View>
 				</NavDrawer>
 			</View>

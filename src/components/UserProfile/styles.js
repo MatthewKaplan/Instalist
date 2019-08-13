@@ -50,5 +50,20 @@ export const styles = StyleSheet.create({
 	},
 	switchContainer: {
 		marginTop: 10
-	}
+	},
+	textStyle: {
+		alignSelf: 'center',
+		color: '#fff',
+		fontSize: 19,
+		fontWeight: '600',
+		paddingTop: 12,
+		paddingBottom: 12
+	},
+	buttonStyle: {
+		width: '90%',
+		margin: 10,
+		backgroundColor: '#007aff',
+		borderRadius: 5,
+		alignSelf: 'center'
+	},
 });

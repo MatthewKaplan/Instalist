@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -5,46 +6,49 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 class SplashPage extends Component {
-	componentDidMount () {
+	componentWillMount () {
 		// AsyncStorage.removeItem('fb_token')
-		this.onAuthComplete(this.props);
+		this.props.check_token();
 	}
 
-	componentWillReceiveProps(nextProps) {
-		this.onAuthComplete(nextProps);
+	componentWillReceiveProps (nextProps) {
+		this.redirectToHome(nextProps);
 	}
 
-	onAuthComplete = async (props) => {
-		let token = await AsyncStorage.getItem('fb_token');
-		if (token) {
+	redirectToHome ({ token }) {
+		if (!_.isNull(token)) {
 			Actions.homeScreen();
 		}
 	}
 
 	render () {
-		return (
-			<View style={styles.container}>
-				<Image
-					style={styles.imageStyle}
-					source={{
-						uri: 'https://i.imgur.com/WkZUwJj.jpg'
-					}}
-					resizeMode="cover"
-				/>
-				<View style={styles.flexContainer}>
-					<Text style={{ ...styles.textStyle, height: 150 }}>InstaList</Text>
-				</View>
-				<TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.facebookLogin()}>
+		if (_.isNull(this.props.token)) {
+			return (
+				<View style={styles.container}>
 					<Image
-						style={styles.facebookBtn}
+						style={styles.imageStyle}
 						source={{
-							uri: 'https://i.imgur.com/uXb1DP2.png'
+							uri: 'https://i.imgur.com/WkZUwJj.jpg'
 						}}
-						resizeMode="contain"
+						resizeMode="cover"
 					/>
-				</TouchableOpacity>
-			</View>
-		);
+					<View style={styles.flexContainer}>
+						<Text style={{ ...styles.textStyle, height: 150 }}>InstaList</Text>
+					</View>
+					<TouchableOpacity style={styles.buttonContainer} onPress={() => Actions.authScreen()}>
+						<Image
+							style={styles.facebookBtn}
+							source={{
+								uri: 'https://i.imgur.com/uXb1DP2.png'
+							}}
+							resizeMode="contain"
+						/>
+					</TouchableOpacity>
+				</View>
+			);
+		} else {
+			return null;
+		}
 	}
 }
 

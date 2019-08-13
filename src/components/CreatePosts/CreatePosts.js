@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import NavDrawer from '../NavDrawer/NavDrawer';
 import ImagePicker from '../ImagePicker/ImagePicker';
 import { styles } from './styles';
+import CategoryPicker from '../CategoryPicker/CategoryPicker';
 
 export class CreatePosts extends Component {
 	render () {
@@ -11,6 +12,7 @@ export class CreatePosts extends Component {
 				<NavDrawer name="Create A New Post">
 					<View style={styles.imageContainer}>
 						<ImagePicker />
+						<CategoryPicker />
 					</View>
 				</NavDrawer>
 			</View>

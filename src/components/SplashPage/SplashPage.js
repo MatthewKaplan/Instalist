@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 class SplashPage extends Component {
+	componentDidMount () {
+		// AsyncStorage.removeItem('fb_token')
+		this.onAuthComplete(this.props);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.onAuthComplete(nextProps);
+	}
+
+	onAuthComplete = async (props) => {
+		let token = await AsyncStorage.getItem('fb_token');
+		if (token) {
+			Actions.homeScreen();
+		}
+	}
+
 	render () {
 		return (
 			<View style={styles.container}>
@@ -31,8 +48,11 @@ class SplashPage extends Component {
 	}
 }
 
+function mapStateToProps ({ auth }){
+	return { token: auth.token };
+}
 
-export default connect(null, actions)(SplashPage);
+export default connect(mapStateToProps, actions)(SplashPage);
 
 const styles = {
 	container: {

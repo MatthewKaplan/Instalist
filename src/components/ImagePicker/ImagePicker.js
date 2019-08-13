@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, Text, StyleSheet, Image, Alert } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 
@@ -46,7 +46,7 @@ export class ImgPicker extends Component {
 			<View style={styles.ImagePicker}>
 				<View style={styles.imagePreview}>
 					{!imageUri ? (
-						<View style={{width: '100%', flexDirection: 'row', justifyContent: "space-around"}}>
+						<View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-around' }}>
 							<Ionicons
 								name="ios-camera"
 								color="rgba(0, 0, 0, 0.556)"
@@ -56,7 +56,16 @@ export class ImgPicker extends Component {
 							<Ionicons name="md-images" color="rgba(0, 0, 0, 0.556)" size={75} onPress={() => this.pickImage()} />
 						</View>
 					) : (
-						<Image style={styles.image} source={{ uri: imageUri }} />
+						<React.Fragment>
+							<AntDesign
+								name="closecircle"
+								color="#fff"
+								size={35}
+								onPress={() => this.setState({ imageUri: '' })}
+								style={{ position: 'absolute', height: '100%', width: '100%', top: '2%', zIndex: 999, left: '88%' }}
+							/>
+							<Image style={styles.image} source={{ uri: imageUri }} />
+						</React.Fragment>
 					)}
 				</View>
 			</View>

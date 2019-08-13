@@ -30,3 +30,12 @@ const startFacebookLogin = async dispatch => {
 	await AsyncStorage.setItem('fb_token', token);
 	dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
 };
+
+export const check_token = () => async dispatch => {
+	let token = await AsyncStorage.getItem('fb_token');
+	if (token) {
+		dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
+	} else {
+		dispatch({ type: FACEBOOK_LOGIN_FAIL });
+	}
+};

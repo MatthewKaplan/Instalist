@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity, AsyncStorage } from 'react-native';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
-export default class SplashPage extends Component {
+class SplashPage extends Component {
 	render () {
 		return (
 			<View style={styles.container}>
 				<Image
 					style={styles.imageStyle}
 					source={{
-						uri:
-							'https://i.imgur.com/WkZUwJj.jpg'
+						uri: 'https://i.imgur.com/WkZUwJj.jpg'
 					}}
 					resizeMode="cover"
-        />
-        <View style={styles.flexContainer}>
+				/>
+				<View style={styles.flexContainer}>
 					<Text style={{ ...styles.textStyle, height: 150 }}>InstaList</Text>
 				</View>
+				<TouchableOpacity style={styles.buttonContainer} onPress={() => this.props.facebookLogin()}>
+					<Image
+						style={styles.facebookBtn}
+						source={{
+							uri: 'https://i.imgur.com/uXb1DP2.png'
+						}}
+						resizeMode="contain"
+					/>
+				</TouchableOpacity>
 			</View>
 		);
 	}
 }
+
+
+export default connect(null, actions)(SplashPage);
 
 const styles = {
 	container: {
@@ -31,13 +44,13 @@ const styles = {
 	},
 	text: {
 		fontSize: 18
-  },
-  imageStyle: {
-    flex: 1,
+	},
+	imageStyle: {
+		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: '#fff'
-  },
-  flexContainer: {
+	},
+	flexContainer: {
 		position: 'absolute',
 		height: '100%',
 		alignItems: 'center',
@@ -47,10 +60,24 @@ const styles = {
 		paddingBottom: 75,
 		width: '100%',
 		alignSelf: 'center'
-  },
-  textStyle: {
+	},
+	textStyle: {
 		fontSize: 70,
 		fontWeight: 'bold',
 		color: '#323232'
 	},
+	facebookBtn: {
+		height: '100%',
+		width: '100%',
+		position: 'absolute',
+		alignSelf: 'center',
+		padding: 0
+	},
+	buttonContainer: {
+		height: '12%',
+		width: '100%',
+		position: 'absolute',
+		padding: 0,
+		bottom: '7%'
+	}
 };

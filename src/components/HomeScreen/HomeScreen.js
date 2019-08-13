@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import { Actions } from 'react-native-router-flux';
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -11,13 +12,13 @@ class HomeScreen extends Component {
 	render () {
     console.log(this.props.userInfo)
 		return (
-			<View>
-				<Text>HOMESCREEN</Text>
-				<Text>HOMESCREEN</Text>
-				<Text>HOMESCREEN</Text>
-				<Text>HOMESCREEN</Text>
-				<Text>HOMESCREEN</Text>
-				<Text>HOMESCREEN</Text>
+      <View onPress={() => Actions.userProfile()}>
+				<Text onPress={() => Actions.userProfile()}>HOMESCREEN</Text>
+				<Text onPress={() => Actions.userProfile()}>HOMESCREEN</Text>
+				<Text onPress={() => Actions.userProfile()}>HOMESCREEN</Text>
+				<Text onPress={() => Actions.userProfile()}>HOMESCREEN</Text>
+				<Text onPress={() => Actions.userProfile()}>HOMESCREEN</Text>
+				<Text onPress={() => Actions.userProfile()}>HOMESCREEN</Text>
 			</View>
 		);
 	}

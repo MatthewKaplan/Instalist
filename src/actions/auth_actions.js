@@ -36,7 +36,7 @@ export const check_token = () => async dispatch => {
 
 export const getFacebookInfo = () => async dispatch => {
 	let token = await AsyncStorage.getItem('fb_token');
-	let userInfo = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,location,picture.type(large)`);
+	let userInfo = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,location,picture.type(large)`);
 	const result = await userInfo.json();
 	dispatch({ type: FACEBOOK_USER_INFO, payload: result })
 };

@@ -28,6 +28,17 @@ export class ImgPicker extends Component {
 		this.setState({ imageUri: image.uri });
 	};
 
+	pickImage = async () => {
+		let result = await ImagePicker.launchImageLibraryAsync({
+			mediaTypes: ImagePicker.MediaTypeOptions.All,
+			aspect: [ 16, 9 ]
+		});
+
+		if (!result.cancelled) {
+			this.setState({ imageUri: result.uri });
+		}
+	};
+
 	render () {
 		const { imageUri } = this.state;
 		return (
@@ -36,6 +47,7 @@ export class ImgPicker extends Component {
 					{!imageUri ? <Text>No image yet.</Text> : <Image style={styles.image} source={{ uri: imageUri }} />}
 				</View>
 				<Button title="Take Image" onPress={() => this.takeImageHandler()} />
+				<Button title="Choose Image From Your Library" onPress={() => this.pickImage()} />
 			</View>
 		);
 	}
@@ -49,7 +61,7 @@ const styles = StyleSheet.create({
 	},
 	imagePreview: {
 		width: '100%',
-		height: 200,
+		height: 405,
 		marginBottom: 10,
 		justifyContent: 'center',
 		alignItems: 'center',

@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 	},
 	profileContainer: {
 		flexDirection: 'row',
-		paddingTop: 40,
+		paddingTop: 20,
 		justifyContent: 'center',
 		backgroundColor: 'white'
 	},

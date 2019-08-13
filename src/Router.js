@@ -25,7 +25,7 @@ const RouterComponent = () => {
 					<Scene key="mapScreen" component={MapScreen} hideNavBar={true} />
 					<Scene key="userFavorites" component={UserFavorites} hideNavBar={true} />
 					<Scene key="userPosts" component={UserPosts} hideNavBar={true} />
-					<Scene key="createPosts" component={CreatePosts} hideNavBar={true} />
+					<Scene key="createPosts" initial component={CreatePosts} hideNavBar={true} />
 					<Scene key="userOrders" component={UserOrders} hideNavBar={true} />
 					<Scene key="itemsSold" component={UserItemsSold} hideNavBar={true} />
 				</Scene>

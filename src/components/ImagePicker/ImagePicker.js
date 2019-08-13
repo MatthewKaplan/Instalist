@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, Text, StyleSheet, Image, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 
@@ -44,10 +45,20 @@ export class ImgPicker extends Component {
 		return (
 			<View style={styles.ImagePicker}>
 				<View style={styles.imagePreview}>
-					{!imageUri ? <Text>No image yet.</Text> : <Image style={styles.image} source={{ uri: imageUri }} />}
+					{!imageUri ? (
+						<View style={{width: '100%', flexDirection: 'row', justifyContent: "space-around"}}>
+							<Ionicons
+								name="ios-camera"
+								color="rgba(0, 0, 0, 0.556)"
+								size={75}
+								onPress={() => this.takeImageHandler()}
+							/>
+							<Ionicons name="md-images" color="rgba(0, 0, 0, 0.556)" size={75} onPress={() => this.pickImage()} />
+						</View>
+					) : (
+						<Image style={styles.image} source={{ uri: imageUri }} />
+					)}
 				</View>
-				<Button title="Take Image" onPress={() => this.takeImageHandler()} />
-				<Button title="Choose Image From Your Library" onPress={() => this.pickImage()} />
 			</View>
 		);
 	}
@@ -61,8 +72,7 @@ const styles = StyleSheet.create({
 	},
 	imagePreview: {
 		width: '100%',
-		height: 405,
-		marginBottom: 10,
+		height: 380,
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderColor: '#ccc',

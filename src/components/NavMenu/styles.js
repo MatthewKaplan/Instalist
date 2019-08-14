@@ -4,8 +4,8 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1.0,
 		paddingTop: 30,
-    color: 'black',
-    backgroundColor: 'rgba(0, 0, 0, 0.156)'
+		color: 'black',
+		backgroundColor: 'rgba(0, 0, 0, 0.156)'
 	},
 	profileIcon: {
 		marginLeft: 10
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 		paddingLeft: 0,
 		alignItems: 'center',
 		flexDirection: 'row',
-		borderBottomWidth: .25,
+		borderBottomWidth: 0.25,
 		borderBottomColor: 'white'
 	},
 	buttonTitle: {
@@ -38,10 +38,18 @@ export const styles = StyleSheet.create({
 	navHeader: {
 		color: 'white',
 		padding: 10,
-		fontSize: 20,
+		fontSize: 20
 	},
 	headerContainer: {
-		borderBottomWidth: .25,
+		borderBottomWidth: 0.25,
 		borderBottomColor: 'white'
+	},
+	tabContainers: {
+		flexDirection: 'row',
+		marginTop: 20,
+		marginLeft: 20
+	},
+	iconPadding: {
+		paddingRight: 20
 	}
 });

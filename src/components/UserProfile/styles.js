@@ -66,4 +66,10 @@ export const styles = StyleSheet.create({
 		borderRadius: 5,
 		alignSelf: 'center'
 	},
+	userImage: {
+		width: 200,
+		height: 200,
+		borderRadius: 50,
+		marginTop: 50
+	}
 });

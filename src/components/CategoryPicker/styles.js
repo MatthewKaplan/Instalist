@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 	categoryContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		height: '42.5%'
+		height: '32.5%'
 	},
 	categoryStyles: {
 		width: '25%',

@@ -22,7 +22,7 @@ export class UserProfile extends Component {
 							source={{
 								uri: `${picture}`
 							}}
-							style={{ width: 200, height: 200, borderRadius: 50, marginTop: 50 }}
+							style={styles.userImage}
 						/>
 					</View>
 

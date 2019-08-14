@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import { Actions } from 'react-native-router-flux';
 import NavDrawer from '../NavDrawer/NavDrawer';
+import {styles} from './styles';
 
 class HomeScreen extends Component {
 	componentDidMount () {
@@ -12,7 +12,7 @@ class HomeScreen extends Component {
 
 	render () {
 		return (
-			<View style={{flex: 1}}>
+			<View style={styles.homeScreenContainer}>
 				<NavDrawer name={this.props.userInfo.location}/>
 			</View>
 		);

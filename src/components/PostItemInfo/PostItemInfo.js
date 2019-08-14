@@ -11,7 +11,6 @@ export class PostItemInfo extends Component {
 	render () {
 		const { title, description, price } = this.props;
     const { successfullyPosted } = this.state;
-    console.log(this.props.item)
 		return (
 			<View style={{ flex: 1 }}>
 				<NavDrawer name="Add more details">

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, Button, Text, StyleSheet, Image, Alert } from 'react-native';
+import { View, StyleSheet, Image, Alert } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
+import { connect } from 'react-redux';
+import { setItemImage } from '../../actions/index';
+import {styles} from './styles';
 
 export class ImgPicker extends Component {
-	state = { imageUri: '' };
-
 	verifyPermissions = async () => {
 		const result = await Permissions.askAsync(Permissions.CAMERA);
 		if (result.status !== 'granted') {
@@ -26,7 +27,7 @@ export class ImgPicker extends Component {
 			aspect: [ 16, 9 ],
 			quality: 0.5
 		});
-		this.setState({ imageUri: image.uri });
+		this.props.setItemImage(image.uri);
 	};
 
 	pickImage = async () => {
@@ -36,17 +37,17 @@ export class ImgPicker extends Component {
 		});
 
 		if (!result.cancelled) {
-			this.setState({ imageUri: result.uri });
+			this.props.setItemImage(result.uri);
 		}
 	};
 
 	render () {
-		const { imageUri } = this.state;
+		const { image } = this.props;
 		return (
 			<View style={styles.ImagePicker}>
 				<View style={styles.imagePreview}>
-					{!imageUri ? (
-						<View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-around' }}>
+					{!image ? (
+						<View style={styles.iconContainer}>
 							<Ionicons
 								name="ios-camera"
 								color="rgba(0, 0, 0, 0.556)"
@@ -61,10 +62,10 @@ export class ImgPicker extends Component {
 								name="closecircle"
 								color="#fff"
 								size={35}
-								onPress={() => this.setState({ imageUri: '' })}
-								style={{ position: 'absolute', height: '100%', width: '100%', top: '2%', zIndex: 999, left: '88%' }}
+								onPress={() => this.props.setItemImage('')}
+								style={styles.removeImageIcon}
 							/>
-							<Image style={styles.image} source={{ uri: imageUri }} />
+							<Image style={styles.image} source={{ uri: image }} />
 						</React.Fragment>
 					)}
 				</View>
@@ -73,22 +74,13 @@ export class ImgPicker extends Component {
 	}
 }
 
-export default ImgPicker;
-
-const styles = StyleSheet.create({
-	ImagePicker: {
-		alignItems: 'center'
-	},
-	imagePreview: {
-		width: '100%',
-		height: 380,
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderColor: '#ccc',
-		borderWidth: 1
-	},
-	image: {
-		width: '100%',
-		height: '100%'
-	}
+export const mapStateToProps = state => ({
+	userInfo: state.userInfo,
+	image: state.postItem.image
 });
+
+export const mapDispatchToProps = dispatch => ({
+	setItemImage: image => dispatch(setItemImage(image))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImgPicker);

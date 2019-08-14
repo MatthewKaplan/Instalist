@@ -11,6 +11,7 @@ import UserPosts from './components/UserPosts/UserPosts';
 import CreatePosts from './components/CreatePosts/CreatePosts';
 import UserOrders from './components/UserOrders/UserOrders';
 import UserItemsSold from './components/UserItemsSold/UserItemsSold';
+import PostItemInfo from './components/PostItemInfo/PostItemInfo';
 
 const RouterComponent = () => {
 	return (
@@ -25,9 +26,10 @@ const RouterComponent = () => {
 					<Scene key="mapScreen" component={MapScreen} hideNavBar={true} />
 					<Scene key="userFavorites" component={UserFavorites} hideNavBar={true} />
 					<Scene key="userPosts" component={UserPosts} hideNavBar={true} />
-					<Scene key="createPosts" initial component={CreatePosts} hideNavBar={true} />
+					<Scene key="createPosts" component={CreatePosts} hideNavBar={true} />
 					<Scene key="userOrders" component={UserOrders} hideNavBar={true} />
 					<Scene key="itemsSold" component={UserItemsSold} hideNavBar={true} />
+					<Scene key="postItemInfo" component={PostItemInfo} hideNavBar={true} />
 				</Scene>
 			</Router>
 		</React.Fragment>

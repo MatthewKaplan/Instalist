@@ -7,7 +7,8 @@ export default function (state = {}, action){
 				name: action.payload.name,
 				location: action.payload.location.name,
         picture: action.payload.picture.data.url,
-        email: action.payload.email
+				email: action.payload.email,
+				id: action.payload.id
 			};
 		default:
 			return state;
